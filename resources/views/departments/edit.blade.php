@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Edit Course</h2>
+                <h2>Edit Department</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('courses.index') }}"> Back</a>
+                <a class="btn btn-primary" href="{{ route('departments.index') }}"> Back</a>
             </div>
         </div>
     </div>
@@ -22,14 +22,14 @@
             </ul>
         </div>
     @endif
-    <form action="{{ route('courses.update',$course->id) }}" method="POST">
+    <form action="{{ route('departments.update',$department->id) }}" method="POST">
         @csrf
         @method('PUT')
          <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Name:</strong>
-                    <input type="text" name="name" value="{{ $course->name }}" class="form-control" placeholder="Name">
+                    <input type="text" name="name" value="{{ $department->name }}" class="form-control" placeholder="Name">
                 </div>      
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Course;
+use App\Department;
 use Illuminate\Http\Request;
-use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\StoreDepartmentRequest;
 
-class CourseController extends Controller
+class DepartmentController extends Controller
 {
     // public function __construct()
     // {
@@ -20,8 +20,8 @@ class CourseController extends Controller
      */
     public function index()
     {
-        $courses = Course::latest()->paginate(5);
-        return view('courses.index',compact('courses'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $departments = Department::latest()->paginate(5);
+        return view('departments.index',compact('departments'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -31,7 +31,7 @@ class CourseController extends Controller
      */
     public function create()
     {
-        return view('courses.create');
+        return view('departments.create');
     }
 
     /**
@@ -40,61 +40,61 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCourseRequest $request)
+    public function store(StoreDepartmentRequest $request)
     {
         $data = $request->validated();
-        $course = new Course();
-        $course->name = $data["name"];
-        $course->save();
-        return redirect()->route('courses.index')->with('success','Course created successfully.');
+        $department = new Department();
+        $department->name = $data["name"];
+        $department->save();
+        return redirect()->route('departments.index')->with('success','department created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function show(Course $course)
+    public function show(Department $department)
     {
-        return view('courses.show',compact('course'));
+        return view('departments.show',compact('department'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Course $course)
+    public function edit(Department $department)
     {
-        return view('courses.edit',compact('course'));
+        return view('departments.edit',compact('department'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Course  $course
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreCourseRequest $request, Course $course)
+    public function update(StoreDepartmentRequest $request, department $department)
     {
         $data = $request->validated();
-        $course->name = $data["name"];
-        $course->update();
-        return redirect()->route('courses.index')->with('success','Course updated successfully');
+        $department->name = $data["name"];
+        $department->update();
+        return redirect()->route('departments.index')->with('success','department updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Course  $course
+     * @param  \App\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy(Department $department)
     {
-        $course->delete();
-        return redirect()->route('courses.index')->with('success','Course deleted successfully');
+        $department->delete();
+        return redirect()->route('departments.index')->with('success','department deleted successfully');
     }
 }
