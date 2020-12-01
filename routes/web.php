@@ -20,3 +20,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('applications' , 'ApplicationController');
+
+Route::resource('users' , 'UserController');
+
+Route::get('/homeprofile', 'HomeController@profile')->name('profile');
+
+Route::get('/comments/{application_id}', 'CommentController@store')->name('comments_store');
+
+Route::resource('comments', 'CommentController');
