@@ -30,3 +30,5 @@ Route::get('/homeprofile', 'HomeController@profile')->name('profile');
 Route::get('/comments/{application_id}', 'CommentController@store')->name('comments_store');
 
 Route::resource('comments', 'CommentController');
+
+Route::resource('departments', 'DepartmentController');
