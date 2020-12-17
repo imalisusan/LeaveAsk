@@ -17,7 +17,32 @@
             <div class="pt-2 font-weight-bold">Department: Finance</div>
             <div>Member Since: {{ Auth::user()->created_at }}</div> 
             <div>Phone Number: 0{{ Auth::user()->phone }}</div>   
-            <div>Remaining Leave Days: </div>  <br>
+            <div>Remaining Leave Days: 
+                @php
+                    $leave_days = 21;
+                    $found = false;
+                    foreach($applications as $application)
+                    {
+                        if($application->amount > 0)
+                        {
+                            $found = true;
+                        }
+                    }
+                    if($found)
+                    {
+                        if ($application->status == 'Approved') {
+                            $remaining_leave = $leave_days - ($application->amount);
+                            echo $remaining_leave;
+                        }
+                        else {
+                            echo $leave_days;
+                        }
+                    }
+                    else {
+                        echo $leave_days;
+                    }
+                @endphp    
+            </div>  <br>
             <a class="btn btn-primary" href="{{ route('users.edit', Auth::user()->id) }}"> Edit Profile</a>
         </div>
     </div>
