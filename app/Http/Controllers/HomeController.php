@@ -28,6 +28,7 @@ class HomeController extends Controller
 
         return view('home');
     }
+
     public function profile()
     {
         $emp_id = Auth::user()->id;
@@ -39,4 +40,5 @@ class HomeController extends Controller
     {
         return view('admin_applications');
     }
+
 }

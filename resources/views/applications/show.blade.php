@@ -41,6 +41,7 @@
                     @endguest
                 </div>
         </div><br>
+
             @role('administrator')
                 <div class="comment-form">
                     <form action="{{ route('comments_store',$application->id) }}" method="GET">
