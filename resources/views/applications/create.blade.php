@@ -35,6 +35,7 @@
                             <option name="maternity">Maternity Leave</option>
                             <option name="paternity">Paternity Leave</option>
                             <option name="sick">Sick Leave</option>
+                            <option name="sick">Day Off</option>
                     </select><br>
                 </div>  
             </div>

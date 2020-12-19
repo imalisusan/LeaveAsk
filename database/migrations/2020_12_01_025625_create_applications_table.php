@@ -17,11 +17,11 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->enum('type', ['Annual Leave', 'Maternity Leave', 'Paternity Leave','Sick Leave' ]);
+            $table->enum('type', ['Annual Leave', 'Maternity Leave', 'Paternity Leave','Sick Leave']);
             $table->text('reason');
             $table->integer('amount');
-            $table->enum('status', ['Approved', 'Pending', 'Declined'])->default('Pending')->nullable();
-            $table->integer('user_id')->nullable();
+            $table->string('status')->default('Pending');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

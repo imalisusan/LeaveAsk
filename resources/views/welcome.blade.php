@@ -1,105 +1,119 @@
 @extends('layouts.app')
 
 @section('content')
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <style>
+body{
+    @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+    overflow: none;
+    background-color: #F6f6f2;
+    font-family: 'Nunito', sans-serif;
+}
 
-        <title>Laravel</title>
+/*Section*/
+.custom-section
+{
+    width: inherit;
+    padding: 40px 0;
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
+    @media screen and(width: 991.98px)
+    {
+        flex-direction: column-reverse;
+    }
+}
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+.custom-section col-lg-4
+{
+    margin-top: 100px;
+}
 
-            .full-height {
-                height: 100vh;
-            }
+.custom-section col-lg-4 h2
+{
+    font-weight: 700;
+    font-size: 63px;
+    color: #000;
+    margin-bottom: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+.custom-section col-lg-4 h3
+{
+    font-weight: 300;
+    font-size: 64px;
+    color: #000;
+    line-height: 1;
+}
 
-            .position-ref {
-                position: relative;
-            }
+.custom-section col-lg-4 p
+{
+    color: #000000;
+    font-size: 14px;
+    margin-top: 30px;
+}
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+.custom-section col-lg-4 a
+{
+    display: inline-block;
+    padding: 8px 22px;
+    color: #fff;
+    background-color: #1ea5f7;
+    border: 1px solid transparent;
+    margin-top: 60px;
+    text-decoration: none;
+    transition: .5s cubic cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
 
-            .content {
-                text-align: center;
-            }
+.custom-section col-lg-4 a::hover
+{
+    color: #1ea5f7;
+    background-color:#ffffff;
+    border: 1px solid #1ea5f7;
+}
 
-            .title {
-                font-size: 84px;
-            }
+.custom-section col-lg-8 img
+{
+    width: 100%;
+    position: absolute;
+    top: -14rem;
+    right: -11%;
+    @media screen and (max-width:991.98px){
+        width: 100%;
+        position: relative;
+        top: 0;
+        right:0;
+        
+    }
+}
+    </style>
+  </head>
+  <body style="background-color: #F6f6f2;">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    LeaveAsk
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+    <div class="container">
+        <div class="row custom-section d-flex align-items-center">
+            <div class="col-12 col-lg-4">
+                <h2 style="color: #388087;font-family: 'Nunito', sans-serif;">Leave Management System</h2><br><br>
+                <h5 style="font-family: 'Nunito', sans-serif;">Ranked #1 in Kenya in Management</h5>
+                <p style="font-family: 'Nunito', sans-serif;">A system that enables employees of a given company to apply for leave, get leave approvals and check on their remaining leave days. Administrators can monitor employee leave applications and approve or reject leave very easily</p><br>
+                <button type="button" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark" style="font-family: 'Nunito', sans-serif;">Get Started</button>
+            </div>
+            <div class="col-12 col-lg-8">
+                <img src="uploads/avatars/homepage.svg" alt="Team Process Banner" style="width:90%; height:40%;">
             </div>
         </div>
-    </body>
+    </div>
+  </body>
 </html>
 
 @endsection

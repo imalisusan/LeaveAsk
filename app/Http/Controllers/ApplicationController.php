@@ -7,6 +7,8 @@ use App\Comment;
 use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreApplicationRequest;
+use DateTime;
+use DB;
 
 class ApplicationController extends Controller
 {
@@ -18,6 +20,16 @@ class ApplicationController extends Controller
         $application->author = $author->name;
     }
       return view('applications.index', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 20);
+  }
+
+  public function admin_index()
+  {
+      $applications = application::latest()->paginate(20);
+      foreach ($applications as $application) {
+        $author =  User::find($application->user_id);
+        $application->author = $author->name;
+    }
+      return view('applications.admin_index', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 20);
   }
 
   /**
@@ -44,14 +56,19 @@ class ApplicationController extends Controller
       $application->type = $data["type"];
       $application->start_date = $data["start_date"];
       $application->end_date = $data["end_date"];
-      $application->amount = $data["amount"];
+      // Count days
+      $datetime1 = new DateTime($application->start_date);
+      $datetime2 = new DateTime($application->end_date);
+      $interval = $datetime1->diff($datetime2);
+      $days = $interval->format('%a');
+      $application->amount = ($days+1);
       $application->reason = $data["reason"];
       // Attach application to user
       $application->user_id = $request->user()->id;
       // End Attach application to user
       $application->save();
       
-      return redirect()->route('applications.index')->with('success', 'Application created successfully');
+      return redirect()->route('profile')->with('success', 'Application created successfully');
   }
 
   /**
@@ -83,6 +100,34 @@ class ApplicationController extends Controller
   {
       return view('applications.edit', compact('application'));
   }
+
+  /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\application  $application
+     * @return \Illuminate\Http\Response
+     */
+
+    public function approve(Application $application){
+        // $application->status = "Approved";
+        // $application->save();
+        $new_status = "Approved";
+        DB::update('update applications set status = ? where id = ?',[$new_status,$application->id]);
+        return redirect()->route('admin_applications')->with('success', 'Application approved successfully');
+    }
+    
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\application  $application
+     * @return \Illuminate\Http\Response
+     */
+
+    public function decline(Application $application){
+        $application->status = "Declined";
+        $application->save();
+        return redirect()->route('admin_applications')->with('success', 'Application declined successfully');
+    }
 
     /**
      * Update the specified resource in storage.
