@@ -26,9 +26,9 @@ Route::resource('applications' , 'ApplicationController');
 
 Route::get('/admin_applications' , 'ApplicationController@admin_index')->name('admin_applications');
 
-Route::get('/approve/{id}' , 'ApplicationController@approve')->name('approve');
+Route::get('/approve/{application}' , 'ApplicationController@approve')->name('approve');
 
-Route::get('/decline/{id}' , 'ApplicationController@decline')->name('decline');
+Route::get('/decline/{application}' , 'ApplicationController@decline')->name('decline');
 
 Route::resource('users' , 'UserController');
 

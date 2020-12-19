@@ -109,10 +109,8 @@ class ApplicationController extends Controller
      */
 
     public function approve(Application $application){
-        // $application->status = "Approved";
-        // $application->save();
-        $new_status = "Approved";
-        DB::update('update applications set status = ? where id = ?',[$new_status,$application->id]);
+        $application->status = "Approved";
+        $application->save();
         return redirect()->route('admin_applications')->with('success', 'Application approved successfully');
     }
     
@@ -124,6 +122,7 @@ class ApplicationController extends Controller
      */
 
     public function decline(Application $application){
+        \Log::alert($application);
         $application->status = "Declined";
         $application->save();
         return redirect()->route('admin_applications')->with('success', 'Application declined successfully');
