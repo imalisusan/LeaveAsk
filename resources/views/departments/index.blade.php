@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('laratrust::panel.layout')
+@section('title', 'Departments')
 @section('content')
 
 <div class="flex flex-col">

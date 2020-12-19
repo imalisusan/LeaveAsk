@@ -36,4 +36,9 @@ class HomeController extends Controller
         return view('profile', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function adminHome()
+    {
+        return view('admin_applications');
+    }
+
 }
