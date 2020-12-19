@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('laratrust::panel.layout')
 
 @section('content')
     <div class="container">
@@ -37,29 +37,13 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Course:</strong>
-                {{ $user->course }}
+                <strong>Department:</strong>
+                {{ $user->department }}
             </div>
         </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>About:</strong>
-                {{ $user->about }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Website:</strong>
-                {{ $user->website }}
-            </div>
-        </div>
-        <div class="pull-left">
-                <a class="btn btn-primary" href="{{ route('users.edit', $user->id) }}"> Edit</a>
-        </div>
-        &nbsp &nbsp
-        <div class="pull-left">
-                <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
-        </div>
+        <div class="flex justify-end">
+          <a class="btn btn-blue mr-4" href="{{ route('users.edit', $user->id) }}">Edit</a>
+          <a class="btn btn-blue" href="{{ route('users.index') }}"> Back</a>        
         </div>
     </div>
 @endsection

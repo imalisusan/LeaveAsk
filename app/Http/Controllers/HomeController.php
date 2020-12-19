@@ -34,4 +34,9 @@ class HomeController extends Controller
         $applications = Application::latest()->where('user_id', "=", $emp_id)->paginate(20);
         return view('profile', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
+
+    public function adminHome()
+    {
+        return view('admin_applications');
+    }
 }

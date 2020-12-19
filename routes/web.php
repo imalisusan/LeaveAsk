@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,6 +24,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('applications' , 'ApplicationController');
 
+Route::get('/admin_applications' , 'ApplicationController@admin_index')->name('admin_applications');
+
+Route::get('/approve/{id}' , 'ApplicationController@approve')->name('approve');
+
+Route::get('/decline/{id}' , 'ApplicationController@decline')->name('decline');
+
 Route::resource('users' , 'UserController');
 
 Route::get('/homeprofile', 'HomeController@profile')->name('profile');
@@ -32,3 +39,5 @@ Route::get('/comments/{application_id}', 'CommentController@store')->name('comme
 Route::resource('comments', 'CommentController');
 
 Route::resource('departments', 'DepartmentController');
+
+Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
