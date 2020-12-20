@@ -103,10 +103,10 @@ body{
     <div class="container">
         <div class="row custom-section d-flex align-items-center">
             <div class="col-12 col-lg-4">
-                <h2 style="color: #388087;font-family: 'Nunito', sans-serif;">Leave Management System</h2><br><br>
-                <h5 style="font-family: 'Nunito', sans-serif;">Ranked #1 in Kenya in Management</h5>
+                <h2 style="color: #388087;font-family: 'Nunito', sans-serif;">LeaveAsk</h2><br><br>
+                <h5 style="font-family: 'Nunito', sans-serif;">Ranked #1 in Kenya in Leave Management</h5>
                 <p style="font-family: 'Nunito', sans-serif;">A system that enables employees of a given company to apply for leave, get leave approvals and check on their remaining leave days. Administrators can monitor employee leave applications and approve or reject leave very easily</p><br>
-                <button type="button" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark" style="font-family: 'Nunito', sans-serif;">Get Started</button>
+                <a href="{{route('register')}}" class="btn btn-outline-secondary btn-rounded" data-mdb-ripple-color="dark" style="font-family: 'Nunito', sans-serif;">Get Started</a>
             </div>
             <div class="col-12 col-lg-8">
                 <img src="uploads/avatars/homepage.svg" alt="Team Process Banner" style="width:90%; height:40%;">
