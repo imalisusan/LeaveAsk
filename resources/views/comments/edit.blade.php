@@ -36,7 +36,7 @@
                             <textarea class="form-control" style="height:100px; width:700px;" name="comment" placeholder="Tell us what you think">{{ $comment->comment }}</textarea>
                         </div> <br>
                         <div class="col-md-12 pt-3">
-                        <button type="submit" class="btn btn-primary">Edit Comment</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #388087; border:none;">Edit Comment</button>
                         </div>
                 </form>
             </div><br>

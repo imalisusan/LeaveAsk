@@ -17,7 +17,7 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-            $table->enum('type', ['Annual Leave', 'Maternity Leave', 'Paternity Leave','Sick Leave' ]);
+            $table->enum('type', ['Annual Leave', 'Maternity Leave', 'Paternity Leave','Sick Leave','Day Off']);
             $table->text('reason');
             $table->integer('amount');
             $table->string('status')->default('Pending');
