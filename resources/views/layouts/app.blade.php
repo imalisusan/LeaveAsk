@@ -27,7 +27,7 @@
         }
     </style>
 </head>
-<body>
+<body >
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -65,7 +65,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('home',Auth::user()->id) }}">Welcome</a>
                                     <a class="dropdown-item" href="{{ route('profile',Auth::user()->id) }}">My Profile</a>
                                     <a class="dropdown-item" href="{{ route('users.edit',Auth::user()->id) }}">Edit Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
