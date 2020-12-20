@@ -35,7 +35,6 @@
                             <option name="maternity">Maternity Leave</option>
                             <option name="paternity">Paternity Leave</option>
                             <option name="sick">Sick Leave</option>
-                            <option name="sick">Day Off</option>
                     </select><br>
                 </div>  
             </div>
@@ -51,13 +50,7 @@
                 <strong>End Date:</strong>
                 <input type="date" class="form-control" name="end_date" placeholder="End Date">
             </div>
-        </div> 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Amount of Days:</strong>
-                <input type="number" class="form-control" name="amount" placeholder="Amount">
-            </div>
-        </div>  
+        </div>   
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Reason:</strong>
