@@ -41,3 +41,5 @@ Route::resource('comments', 'CommentController');
 Route::resource('departments', 'DepartmentController');
 
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
+
+Route::get('/search', 'HomeController@search')->name('search');

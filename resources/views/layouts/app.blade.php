@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -40,7 +41,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-purple active-purple-2 mt-2"  action="{{ route('search') }}" method="GET">
+                            <input type="text" class="form-control form-control-sm ml-3 w-75" name="search"  placeholder="&#xF002;   Search" style="font-family:Arial, FontAwesome" style="text-align:center;width:800px;height:25px; margin-top:5px; border: 1px solid #A0AEC0;">
+                        </form>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
