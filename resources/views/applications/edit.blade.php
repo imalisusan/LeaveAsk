@@ -50,12 +50,6 @@
                 <strong>End Date:</strong>
                 <input type="date" class="form-control" name="end_date" placeholder="End Date" value="{{ $application->end_date }}">
             </div>
-        </div> 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Amount of Days:</strong>
-                <input type="number" class="form-control" name="amount" placeholder="Amount" value="{{ $application->amount }}">
-            </div>
         </div>  
         <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
