@@ -8,7 +8,7 @@ use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreApplicationRequest;
 use DateTime;
-use DB;
+use App\Mail\LeaveAskEmail;
 
 class ApplicationController extends Controller
 {
@@ -123,6 +123,10 @@ class ApplicationController extends Controller
         $author->update();
         $application->status = "Approved";
         $application->save();
+
+        $subject = "Leave Application Approved";
+        $message = ['message' => 'Your application has been approved. Kindly check your profile to see remaining leave days. See you soon!'];
+        Mail::to($author->email)-> send(new LeaveAskEmail($message, env('MAIL_FROM_ADDRESS'), $subject, env('MAIL_FROM_NAME'), $author->name));
         return redirect()->route('admin_applications')->with('success', 'Application approved successfully');
     }
     
@@ -134,9 +138,13 @@ class ApplicationController extends Controller
      */
 
     public function decline(Application $application){
-        \Log::alert($application);
+        $author = User::find($application->user_id);
         $application->status = "Declined";
         $application->save();
+        
+        $subject = "Leave Application Declined";
+        $message = ['message' => 'Sorry your application has been declined. Kindly resolve this issue with the administrator.'];
+        Mail::to($author->email)-> send(new LeaveAskEmail($message, env('MAIL_FROM_ADDRESS'), $subject, env('MAIL_FROM_NAME'),$author->name));
         return redirect()->route('admin_applications')->with('success', 'Application declined successfully');
     }
 
