@@ -25,7 +25,6 @@ class StoreApplicationRequest extends FormRequest
     {
         return [
             'type'=> 'required',
-            'amount'=> 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'reason' => 'required',

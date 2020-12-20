@@ -12,6 +12,11 @@
 <body>
     
 <div class="container">
+    @if ($message = Session::get('success'))
+    <div class="alert alert-success">
+        <p>{{ $message }}</p>
+    </div>
+    @endif
     <div class="row">
        
         <div class="col-9 pt-5">
