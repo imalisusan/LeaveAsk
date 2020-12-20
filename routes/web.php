@@ -43,3 +43,7 @@ Route::resource('departments', 'DepartmentController');
 Route::get('admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('is_admin');
 
 Route::get('/search', 'HomeController@search')->name('search');
+
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
