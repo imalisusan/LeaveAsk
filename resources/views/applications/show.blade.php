@@ -58,13 +58,13 @@
                             <textarea class="form-control" style="height:100px; width:700px;" name="comment" placeholder="Your view goes here"></textarea>
                         </div> <br>
                         <div class="col-md-12 pt-3">
-                        <button type="submit" class="btn btn-primary">Add Comment</button>
+                        <button type="submit" class="btn btn-primary" style="background-color: #388087; border:none;">Add Comment</button>
                         </div>
                 </form>
             </div><br>
         <div class="row">
                 <div class="col-md-8 col-md-offset-2">           
-            <h3><i class="fas fa-comments" style="color: #227DC7"></i>  Comments</h3>
+            <h3><i class="fas fa-comments" style="color: #388087"></i>  Comments</h3>
                 @foreach ($comments as $comment)
                     <div class="comment">
                         @if (Auth::user()->id == $comment->user_id)

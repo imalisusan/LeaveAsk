@@ -70,12 +70,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        if(request()->hasFile('avatar'))
+        /**
+         * 
+         * if(request()->hasFile('avatar'))
         {
             $avatar = request()->file('avatar')->getClientOriginalName();
             request()->file('avatar')->storeAs('public/uploads/avatars', $user->id.'/'.$avatar, '');
             $user->update(['avatar' => $avatar]);
         }
+         */
         
         return $user;
     
