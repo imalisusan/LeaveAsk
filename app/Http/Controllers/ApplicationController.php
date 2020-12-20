@@ -141,10 +141,15 @@ class ApplicationController extends Controller
         $application->type = $data["type"];
         $application->start_date = $data["start_date"];
         $application->end_date = $data["end_date"];
-        $application->amount = $data["amount"];
+        // Count days
+        $datetime1 = new DateTime($application->start_date);
+        $datetime2 = new DateTime($application->end_date);
+        $interval = $datetime1->diff($datetime2);
+        $days = $interval->format('%a');
+        $application->amount = ($days+1);
         $application->reason = $data["reason"];
         $application->update();
-        return redirect()->route('applications.index')->with('success', 'application updated successfully');
+        return redirect()->route('profile')->with('success', 'Application updated successfully');
     }
 
     /**
@@ -156,6 +161,6 @@ class ApplicationController extends Controller
     public function destroy(Application $application)
     {
         $application->delete();
-        return redirect()->route('applications.index')->with('success', 'application deleted successfully');
+        return redirect()->route('profile')->with('success', 'Application deleted successfully');
     }
 }
