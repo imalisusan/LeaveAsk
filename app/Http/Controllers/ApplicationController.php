@@ -51,24 +51,33 @@ class ApplicationController extends Controller
   public function store(StoreApplicationRequest $request)
   {
       $data = $request->validated();
+      $author = $request->user();
 
-      $application = new Application();
-      $application->type = $data["type"];
-      $application->start_date = $data["start_date"];
-      $application->end_date = $data["end_date"];
       // Count days
-      $datetime1 = new DateTime($application->start_date);
-      $datetime2 = new DateTime($application->end_date);
+      $datetime1 = new DateTime($data["start_date"]);
+      $datetime2 = new DateTime($data["end_date"]);
       $interval = $datetime1->diff($datetime2);
       $days = $interval->format('%a');
-      $application->amount = ($days+1);
-      $application->reason = $data["reason"];
-      // Attach application to user
-      $application->user_id = $request->user()->id;
-      // End Attach application to user
-      $application->save();
-      
-      return redirect()->route('profile')->with('success', 'Application created successfully');
+
+      if($author->leave_days > ($days+1)) {
+        \Log::alert($author->leave_days);
+        $application = new Application();
+        $application->type = $data["type"];
+        $application->start_date = $data["start_date"];
+        $application->end_date = $data["end_date"];
+        
+        $application->amount = ($days+1);
+  
+        $application->reason = $data["reason"];
+        // Attach application to user
+        $application->user_id = $author->id;
+        // End Attach application to user
+        $application->save();
+        
+        return redirect()->route('profile')->with('success', 'Application created successfully');
+      }else {
+        return redirect()->route('profile')->with('failure', 'What a bummer! You do not have enough leave days left to apply for a leave.');
+      }
   }
 
   /**
@@ -109,6 +118,9 @@ class ApplicationController extends Controller
      */
 
     public function approve(Application $application){
+        $author = User::find($application->user_id);
+        $author->leave_days -= $application->amount;
+        $author->update();
         $application->status = "Approved";
         $application->save();
         return redirect()->route('admin_applications')->with('success', 'Application approved successfully');

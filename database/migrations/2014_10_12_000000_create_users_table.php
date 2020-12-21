@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('avatar')->default('avatar.png');
             $table->integer('phone')->nullable();
+            $table->integer('leave_days')->default(21)->nullable();
             $table->string('role')->nullable();
             $table->string('department')->nullable();
             $table->rememberToken();

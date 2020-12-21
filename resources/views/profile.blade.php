@@ -13,9 +13,15 @@
     
 <div class="container">
     @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
+            <div class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+    @else
+      @if ($message = Session::get('failure'))
+          <div class="alert alert-danger">
+                <p>{{ $message }}</p>
+            </div>
+      @endif
     @endif
     <div class="row">
        
@@ -30,32 +36,7 @@
             <div class="pt-2 font-weight-bold" style="color:#242323;">Department: Finance</div>
             <div style="color:#242323;">Member Since: {{ Auth::user()->created_at }}</div> 
             <div style="color:#242323;">Phone Number: 0{{ Auth::user()->phone }}</div>   
-            <div style="color:#242323;">Remaining Leave Days: 
-                @php
-                    $leave_days = 21;
-                    $found = false;
-                    foreach($applications as $application)
-                    {
-                        if($application->amount > 0)
-                        {
-                            $found = true;
-                        }
-                    }
-                    if($found)
-                    {
-                        if ($application->status == 'Approved') {
-                            $remaining_leave = $leave_days - ($application->amount);
-                            echo $remaining_leave;
-                        }
-                        else {
-                            echo $leave_days;
-                        }
-                    }
-                    else {
-                        echo $leave_days;
-                    }
-                @endphp    
-            </div>  <br>
+            <div style="color:#242323;">Remaining Leave Days: {{ Auth::user()->leave_days }}</div>  <br>
             <a class="btn btn-primary" href="{{ route('users.edit', Auth::user()->id) }}" style="background-color: #388087; border:0px;"> Edit Profile</a>
         </div>
         <div class="col-3 p-5">
@@ -78,10 +59,13 @@
                     <p class="mb-0" style="color:#242323;">Amount of days: {{ $application->amount }}</p>
                     <p class="mb-0" style="color:#242323;">Reason: {{ $application->reason }}</p>
                     <p class="mb-0" style="color:#242323;">End Date: {{ $application->end_date }}</p>
+                    <p class="mb-0" style="color:#242323;">Status: {{ $application->status }}</p>
                     </div>
                     <div class="card-body" style="background-color: #F6f6f2;">
                         <a href="{{ route('applications.show',$application->id) }}" class="card-link">View</a>
-                        <a class="card-link" href="{{ route('applications.edit',$application->id) }}">Edit</a>
+                        @if($application->status == "Pending")
+                            <a class="card-link" href="{{ route('applications.edit',$application->id) }}">Edit</a>
+                        @endif
                     </div>
                 </div><br>
             </div>
