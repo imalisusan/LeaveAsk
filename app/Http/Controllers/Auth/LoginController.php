@@ -82,6 +82,6 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        return $user;
+        return Socialite::driver('google')->redirect('http://leaveask.herokuapp.com/');
     }
 }
