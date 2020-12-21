@@ -82,6 +82,8 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        return Socialite::driver('google')->redirect('http://leaveask.herokuapp.com/');
+        $emp_id = Auth::user()->id;
+        $applications = Application::latest()->where('user_id', "=", $emp_id)->paginate(20);
+        return view('profile', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 }
