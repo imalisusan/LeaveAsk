@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -84,8 +82,6 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        $emp_id = $user->id;
-        $applications = Application::latest()->where('user_id', "=", $emp_id)->paginate(20);
-        return view('profile', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 5);
+        return redirect('home');
     }
 }
