@@ -44,33 +44,33 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <a href="{{config('laratrust.panel.go_back_route')}}" class="nav-link" style="color: #fff; background-color: #388087;">← Go Back</a>
+                    <a href="{{config('laratrust.panel.go_back_route')}}" class="nav-link" style="color: #388087;">← Go Back</a>
                     <a
-                      href="{{ route('laratrust.roles-assignment.index') }}" class="nav-link" style="color: #fff; background-color: #388087;"
+                      href="{{ route('laratrust.roles-assignment.index') }}" class="nav-link" style="color: #388087;"
                     >
                       Roles & Permissions Assignment
                     </a>
                     <a
                       href="{{route('laratrust.roles.index')}}"
-                      class="nav-link" style="color: #fff; background-color: #388087;"
+                      class="nav-link" style="color: #388087;"
                     >
                       Roles
                     </a>
                     <a
                       href="{{ route('users.index') }}"
-                      class="nav-link" style="color: #fff; background-color: #388087;"
+                      class="nav-link" style="color: #388087;"
                     >
                       Employees
                     </a>
                     <a
                       href="{{ route('departments.index') }}"
-                      class="nav-link" style="color: #fff; background-color: #388087;"
+                      class="nav-link" style="color: #388087;"
                     >
                       Departments
                     </a>
                     <a
                       href="{{ route('admin_applications') }}"
-                      class="nav-link" style="color: #fff; background-color: #388087;"
+                      class="nav-link" style="color: #388087;"
                     >
                       Applications
                     </a>
@@ -80,7 +80,7 @@
 
   <header class="bg-white shadow">
     <div class="max-w-6xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl font-bold leading-tight text-gray-900">
+      <h1 class="text-3xl font-bold leading-tight text-gray-900" style="color: #388087;">
         @yield('title')
       </h1>
     </div>
