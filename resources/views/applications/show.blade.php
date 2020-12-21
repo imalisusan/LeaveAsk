@@ -58,8 +58,8 @@
                 </div><br>
             @endrole
         <div class="row">
-                <div class="col-md-8 col-md-offset-2">           
-            <h3><i class="fas fa-comments" style="color: #227DC7"></i>  Comments</h3>
+                <div class="col-md-8 col-md-offset-2">      
+            <h3>Comments</h3>
                 @if($comments->count() == 0)
                     <h5>No comments</h5>
                 @else
