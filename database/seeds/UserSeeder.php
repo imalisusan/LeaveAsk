@@ -26,6 +26,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('passwordsusan'),
         ], 
         [
+            'id'   => '008',
             'name' => 'Maryann Gitonga',
             'email' => 'maryanngitonga@gmail.com',
             'avatar'=> 'avatar.png',
@@ -35,6 +36,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('passwordmaryann'),
         ], 
         [
+            'id'   => '009',
             'name' => 'Maya Bororio',
             'email' => 'mayaboroio@gmail.com',
             'avatar'=> 'avatar.png',
@@ -44,6 +46,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('passwordmaya'),
         ], 
         [
+            'id'   => '0010',
             'name' => 'Whitney Atonya',
             'email' => 'whitneyatonya@gmail.com',
             'avatar'=> 'avatar.png',
