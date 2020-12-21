@@ -83,7 +83,7 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        $emp_id = user()->id;
+        $emp_id = $user->id;
         $applications = Application::latest()->where('user_id', "=", $emp_id)->paginate(20);
         return view('profile', compact('applications'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
