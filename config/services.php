@@ -33,7 +33,7 @@ return [
     'google' => [
         'client_id' => '1054553513422-7f0m4j4bb8b2m9esurb3o6o4q8kfkb09.apps.googleusercontent.com',
         'client_secret' => 'jEoquRwR2M799Nj2fp0IvsWt',
-        'redirect' => 'http://leaveask.herokuapp.com',
+        'redirect' => 'http://leaveask.herokuapp.com/login/google/callback',
     ],
 
 ];

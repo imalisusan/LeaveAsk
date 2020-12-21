@@ -82,6 +82,6 @@ class LoginController extends Controller
     {
         $user = Socialite::driver('google')->stateless()->user();
 
-        return redirect('home');
+        return redirect()->route('home');
     }
 }
