@@ -15,6 +15,7 @@ class UserSeeder extends Seeder
         
  $users = [
         [
+            'id'   => '001',
             'name' => 'Imali Susan',
             'email' => 'susanimali@gmail.com',
             'avatar'=> 'avatar.png',
@@ -51,6 +52,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('passwordwhitney'),
         ], 
         [
+            'id'   => '002',
             'name' => 'Malachi Moore',
             'email' => 'malachimoore@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -60,6 +62,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
+            'id'   => '003',
             'name' => 'Anthony Campbell',
             'email' => 'anthonycampbelli@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -69,6 +72,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
+            'id'   => '004',
             'name' => 'Nora Molina',
             'email' => 'noramolina@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -78,6 +82,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
+            'id'   => '005',
             'name' => 'Imani Hinton',
             'email' => 'imanihinton@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -87,6 +92,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
+            'id'   => '006',
             'name' => 'Abra Byers',
             'email' => 'abrabyers@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -96,6 +102,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('123456'),
         ],
         [
+            'id'   => '007',
             'name' => 'Geraldine Luna',
             'email' => 'geraldineluna@mailinator.com',
             'avatar'=> 'avatar.png',
@@ -109,6 +116,7 @@ class UserSeeder extends Seeder
     foreach($users as $user)
           {
               User::create([
+               'id'  => $user['id'],
                'name' => $user['name'],
                'email' => $user['email'],
                'avatar' => $user['avatar'],
