@@ -19,24 +19,24 @@
                 </div>
                 <div class="card-body" >
                     @guest
-                        <a href="{{ route('applications.index') }}" class="card-link" style="color: #4B94FD;">Back</a>
+                        <a href="{{ route('profile') }}" class="card-link" style="color: #4B94FD;">Back</a>
                     @else
-                        @if (Auth::user()->id == $author->id)
-                            <form action="{{ route('applications.destroy',$application->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the application?');">
-                                <a class="card-link" href="{{ route('applications.edit',$application->id) }}"style="color: #4B94FD;">Edit</a>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn card-link" style="color: #4B94FD;">Delete</button>
-                                    <a href="{{ route('applications.index') }}" class="card-link" style="color: #4B94FD;">Back</a>
-                            </form>
-                        @else
-                            @role('administrator')
-                                @if($application->status == "Pending")
-                                    <a class="card-link" href="{{ route('approve',$application->id) }}"style="color: #4B94FD;">Approve</a>
-                                    <a class="card-link" href="{{ route('decline',$application->id) }}"style="color: #4B94FD;">Decline</a>
-                                @endif
-                                <a href="{{ route('admin_applications') }}" class="card-link" style="color: #4B94FD;">Back</a>
-                            @endrole
+                        <a href="{{ route('profile') }}" class="card-link" style="color: #4B94FD;">Back</a>
+                        @if($application->status == "Pending")
+                            @if (Auth::user()->id == $author->id)
+                                <form action="{{ route('applications.destroy',$application->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete the application?');">
+                                    <a class="card-link" href="{{ route('applications.edit',$application->id) }}"style="color: #4B94FD;">Edit</a>
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn card-link" style="color: #4B94FD;">Delete</button>
+                                </form>
+                            @else
+                                @role('administrator')
+                                        <a class="card-link" href="{{ route('approve',$application->id) }}"style="color: #4B94FD;">Approve</a>
+                                        <a class="card-link" href="{{ route('decline',$application->id) }}"style="color: #4B94FD;">Decline</a>
+                                    <a href="{{ route('admin_applications') }}" class="card-link" style="color: #4B94FD;">Back</a>
+                                @endrole
+                            @endif
                         @endif
                     @endguest
                 </div>
